@@ -62,7 +62,7 @@ public class CardDeliveryTest {
         notification.waitUntil(visible, 15000);
     }
     @Test
-    void shouldAutoPutTest() {
+    void autoPutTest() {
         city.setValue("Ка");
         cityClick.waitUntil(exist, 5000);
         cityChoose.click();
