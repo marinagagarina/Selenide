@@ -1,5 +1,6 @@
 package ru.netology;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,18 +15,23 @@ import java.util.GregorianCalendar;
 import java.util.*;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CardDeliveryTest {
     SelenideElement form = $("form");
     SelenideElement city = form.$("[data-test-id=city] input");
     SelenideElement cityClick = $(".menu");
+    SelenideElement cityChoose = $(byText("Казань"));
     SelenideElement date = form.$("[data-test-id=date] input");
+    SelenideElement popupDate = $(".calendar");
+    SelenideElement deliveryDate = $(byText("8"));
     SelenideElement name = form.$("[data-test-id=name] input");
     SelenideElement phone = form.$("[data-test-id=phone] input");
     SelenideElement agreement = form.$("[data-test-id=agreement]");
     SelenideElement button = $$("button").find(exactText("Забронировать"));
     SelenideElement notification = $("[data-test-id=notification]");
+
 
 
     private String getFutureDate (int plusDate) {
@@ -49,6 +55,20 @@ public class CardDeliveryTest {
         date.doubleClick().sendKeys(Keys.BACK_SPACE);
         String futureDay = getFutureDate(3);
         date.setValue(futureDay);
+        name.setValue("Иванов Василий");
+        phone.setValue("+79270000000");
+        agreement.click();
+        button.click();
+        notification.waitUntil(visible, 15000);
+    }
+    @Test
+    void shouldAutoPutTest() {
+        city.setValue("Ка");
+        cityClick.waitUntil(exist, 5000);
+        cityChoose.click();
+        date.click();
+        popupDate.waitUntil(exist, 5000);
+        deliveryDate.click();
         name.setValue("Иванов Василий");
         phone.setValue("+79270000000");
         agreement.click();
