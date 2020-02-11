@@ -1,2 +1,2 @@
 ## Project status
-[![Build status](https://ci.appveyor.com/api/projects/status/kbhtuah16ffq896u?svg=true)](https://ci.appveyor.com/project/marinagagarina/selenium-k7hre)
+[![Build status](https://ci.appveyor.com/api/projects/status/x4q5p34y5geral7e?svg=true)](https://ci.appveyor.com/project/marinagagarina/selenium-p626t)
