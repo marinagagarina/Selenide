@@ -39,7 +39,7 @@ public class CardDeliveryTest {
 
     @BeforeEach
     void openHost() {
-        open("http://localhost:9999");
+        open("http://localhost:7777");
     }
 
     @Test
